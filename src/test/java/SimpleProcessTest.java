@@ -19,7 +19,7 @@ public class SimpleProcessTest {
 		RepositoryService repositoryService = processEngine
 				.getRepositoryService();
 		repositoryService.createDeployment()
-				.addClasspathResource("chapter1/bookorder.simple.bpmn20.xml")
+				.addClasspathResource("bookorder.simple.bpmn20.xml")
 				.deploy();
 
 		ProcessInstance processInstance = runtimeService

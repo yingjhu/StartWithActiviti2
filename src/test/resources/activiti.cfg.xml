@@ -7,7 +7,7 @@
 		class="org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration">
 		<!-- Database configurations -->
 		<property name="databaseType" value="h2" />
-		<property name="jdbcUrl" value="jdbc:h2:~/Activiti" />
+		<property name="jdbcUrl" value="jdbc:h2:tcp://localhost/activiti" />
 		<property name="jdbcDriver" value="org.h2.Driver" />
 		<property name="jdbcUsername" value="sa" />
 		<property name="jdbcPassword" value="" />

@@ -29,7 +29,7 @@ public class BookOrderTest {
 		IdentityService identityService = processEngine.getIdentityService();
 		TaskService taskService = processEngine.getTaskService();
 		repositoryService.createDeployment()
-				.addClasspathResource("chapter1/bookorder.bpmn20.xml").deploy();
+				.addClasspathResource("bookorder.bpmn20.xml").deploy();
 
 		// remove tasks already present
 		List<Task> availableTaskList = taskService.createTaskQuery()
