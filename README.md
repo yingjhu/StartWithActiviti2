@@ -149,7 +149,7 @@ which provides a hook into the Activiti Engine to deploy and undeploy process de
 
 ## Chapter 5
 ## An simple process to activiti
-### Add to ativiti exploer
+### Add to activiti exploer
 - 執行 build.xml
 - put a JAR file containing the Java service task in the webapps/activiti-explorer/WEB-INF/lib
 - a BAR file is created in the src/main/resources/chapter5/dist，將 bar 打包上傳至 ativiti exploer
