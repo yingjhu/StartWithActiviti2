@@ -7,12 +7,15 @@ Chapter4
 ## Outline
 
 - [part1](#part1)
-  + [Developing and testing with the Activiti Engine](#Developing_and_testing_with_the_Activit_Engine)
+  + [Developing and testing with the Activiti Engine](#developing-and-testing-with-the-activit-engine)
 - [part2](#part2)
-  + [Activiti Engine API](#Activiti Engine API)
-    * [RuntimeService](#RuntimeService)
-    * [TaskService](#TaskService)
-    * [RepositoryService](#RepositoryService)
+  + [Activiti Engine API](#activiti-engine-api)
+    * [RuntimeService](#suntimeservice)
+    * [TaskService](#taskservice)
+    * [RepositoryService](#repositoryservice)
+    * [IdentityService](#identityservice)
+    * [HistoryService](#historyservice)
+- [part3](#part3)
 
 
 ## part1
@@ -72,3 +75,38 @@ parameter, which deletes all information regarding the process definition, runni
 instances, and history. If you want all process data, including running process
 instances, to be deleted, you should use a Boolean value of true for the
 second input parameter.
+
+#### IdentityService
+
+新增成員或是一個 group 的方法，新增後必須存檔。
+```java
+User newUser = identityService
+.newUser("John Doe");
+identityService.saveUser(newUser);
+```
+#### HistoryService
+在 Actitivi 上，ACT_HI 是歷史資料，
+ACT_RU 是執行中的資料。RU中的資料在結束完成後會被刪除。
+
+若要儲存想顯示的變數資料(history):
+default is activiti.cfg.xml. And add the following property to the process engine configuration:
+```xml
+<property name="history" value="full" />
+```
+- None—No history information is archived.
+- Activity—All process and activity instance information is archived.
+- Audit (default)—All process, activity instance, and form properties information
+is archived.
+- Full—The highest level of archiving; all audit information is archived and, additionally,
+the updates to process variables and user task form properties are
+stored.
+
+## part3
+
+The Java service task can be used in four ways:
+- Java service task class
+  *分同步和非同步
+- Java service task class with field extensions
+- Java service task with method or value expressions
+- A delegate expression that defines a variable that is resolved to a Java bean at
+runtime(在4-4中介紹)
