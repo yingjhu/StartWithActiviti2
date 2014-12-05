@@ -7,7 +7,7 @@ Chapter4
 ## Outline
 
 - [part1](#part1)
-  + [Developing and testing with the Activiti Engine](#developing-and-testing-with-the-activit-engine)
+  + [Developing and testing with the Activiti Engine](#developing-and-testing-with-the-activiti-engine)
 - [part2](#part2)
   + [Activiti Engine API](#activiti-engine-api)
     * [RuntimeService](#suntimeservice)
@@ -16,7 +16,12 @@ Chapter4
     * [IdentityService](#identityservice)
     * [HistoryService](#historyservice)
 - [part3](#part3)
+- [part4](#part4)
+===
+Chapter5
 
+## An simple process to activiti
+- [Add to activiti exploer](#add-to-activiti-exploer)
 
 ## part1
 ### Developing and testing with the Activiti Engine
@@ -108,5 +113,46 @@ The Java service task can be used in four ways:
   *分同步和非同步
 - Java service task class with field extensions
 - Java service task with method or value expressions
+  * When you use a Java bean as a process variable, make sure the bean implements the Serializable interface
 - A delegate expression that defines a variable that is resolved to a Java bean at
 runtime(在4-4中介紹)
+
+**可先研究dependency injection、bean、spring、JDBC**
+
+## part4
+
+An ActivitiRule Spring bean must be added to the Spring configuration:
+```xml
+<bean id="activitiRule" class="org.activiti.engine.test.ActivitiRule">
+<property name="processEngine" ref="processEngine" />
+</bean>
+```
+ref = "bean" (參考)、value = "123"(直接設定數值)
+**搭配spring dependence injection**
+
+
+- 另外 spring 版本需一致，在 pom.xml 裡，需更改為3.1.2RELEASE
+
+The ActivitiRule Spring bean must also be injected into the Spring-enabled unit
+test via the @Autowire annotation:
+```java
+@Autowired
+@Rule
+public ActivitiRule activitiSpringRule;
+```
+
+To be able to
+use the @Deployment annotation, you have to inject the ActivitiRule ,
+which provides a hook into the Activiti Engine to deploy and undeploy process definitions.
+
+使用 deployment 測試時，會在每個 Test 產生 engine 然後再刪除，因此會浪費許多時間，此方法會較好。
+
+## Chapter 5
+## An simple process to activiti
+### Add to ativiti exploer
+- 執行 build.xml
+- put a JAR file containing the Java service task in the webapps/activiti-explorer/WEB-INF/lib
+- a BAR file is created in the src/main/resources/chapter5/dist，將 bar 打包上傳至 ativiti exploer
+- 在 activiti exploer 上執行
+
+另外此範例會用到 e-mil ，所以需架設 mail server。Download Apache James from http://james.apache.org and unzip the file in a directory
