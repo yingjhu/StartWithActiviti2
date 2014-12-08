@@ -22,6 +22,8 @@ Chapter5
 
 ## An simple process to activiti
 - [Add to activiti exploer](#add-to-activiti-exploer)
+- [Account in Activiti NOTE](#account-in-activiti-note)
+  + [Datebase](#datebase)
 
 ## part1
 ### Developing and testing with the Activiti Engine
@@ -156,3 +158,13 @@ which provides a hook into the Activiti Engine to deploy and undeploy process de
 - 在 activiti exploer 上執行
 
 另外此範例會用到 e-mil ，所以需架設 mail server。Download Apache James from http://james.apache.org and unzip the file in a directory
+
+## Account in Activiti NOTE
+- 在 diagram 時，必須是 println ，不可以是 print ，才可以在 console 顯示。
+- 必須選擇 groovy 模式
+- 打包上傳至 activiti : mvn package(打開h2) --> bar，一樣複製檔案至activiti/WEB-INF/bin
+
+### Datebase
+- SQL 基本架構 http://www.w3schools.com/sql/default.asp
+- 常用到的:create table、add data(INSERT)、LIKE、IN、JOINS(4種方法)
+- 三階正規化(如何設計好的TABLE)
